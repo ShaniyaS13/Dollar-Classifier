@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# CommonCents
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CommonCents is a web application that is intended to be used by individuals who are visually impaired. After researching, my team members and I realized that there isn't many resources for people with visual disabilities, especially when it relates to their finances. We decided to create this application to help these individuals be able to differentiate between the USD currency.
 
-## Available Scripts
+For right now, the application is only able to differentiate between a $50 dollar bill and a $100 dollar bill. We are hoping to incorporate other USD, such as $1, $5, $10 and $20 dollar bills.
 
-In the project directory, you can run:
+## Requirements:
 
-### `npm start`
+1. React (https://reactjs.org/)
+2. Express (https://expressjs.com/)
+3. Python (https://www.python.org/)
+4. Pipenv (https://pipenv.pypa.io/en/latest/)
+5. Teachable machine (https://teachablemachine.withgoogle.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Note: This web application uses machine learning algorithms to be able to differentiate between the different dollar bills. For this we relied heavily on teachable machine to do the heavylifting for us.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation:
 
-### `npm test`
+1. Clone the project.
+2. `cd` into the `frontend` folder and run `npm install`.
+3. `cd` into the `backend` folder and run `npm install`.
+4. Make sure you have python and pipenv installed on your machine, this is mandatory to be able to get this project up and running.
+5. `cd` into the `model` folder and run `pipenv install`.
+6. Run `pipenv shell` to activate the python environment.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Please note: You will need three separate terminals: one for the frontend folder, one for the backend folder and one for the model folder.
 
-### `npm run build`
+## Running the project:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The web application uses a react frontend, to allow the user to upload a file. Which then passes along the file that was uploaded to the express backend. The backend will pass that file to the trained machine learning model, that is in the model folder. The prediction is then returned to express, which is then returned to react and displayed to the user.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the react app:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. `cd` into the `frontend` folder.
+2. Run `npm start`, this should open up a browser with a url of 'http://localhost:3000'.
 
-### `npm run eject`
+To run the express api:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. `cd` into `backend` folder.
+2. Run `npm start`, this should get the server up and running.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To run the flask server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. `cd` into `model` folder.
+2. Run `flask run`, this is to get the flask server up and running as well.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Note: Express is used to proxy the request to the flask server, which is where the trained model lives (the app.py file). Please read the comments in the files for a more detailed explanation.
 
-## Learn More
+## How to use the web application:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Once the application is up and running, you can upload a file/picture of a $50 or $100 dollar bill and the output will be displayed onto the screen.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Please be aware that the trained model is not 100% accurate. There might be an instance where the file you upload will have the wrong output.
 
-### Code Splitting
+## Next steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+There are a few features that we want to add to our project:
 
-### Analyzing the Bundle Size
+1. Display the image that the user uploaded onto the screen.
+2. Feedback section, where the user can tell us if the output that was provided was correct or not.
+3. Accessibility options: have the output be read out loud to the user.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Team Members:
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Caesar Cuzco, student at John Jay College: github: caesarc6
+2. Shaniya Snagg, student at John Jay College: github: shaniyas13
+3. Melissa Persaud, student at Queens College: github: melissapersaud17
